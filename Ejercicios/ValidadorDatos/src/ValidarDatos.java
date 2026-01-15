@@ -8,7 +8,7 @@ public class ValidarDatos {
             cuenta.retirar(1500);
         } catch (IllegalArgumentException e) {
             System.out.println("Error controlado: " + e.getMessage());
-        } catch (SaldoInsuficienteExc e) {
+        } catch (SaldoInsuficienteException e) {
             System.out.println("Error controlado: " + e.getMessage());
         }
     }

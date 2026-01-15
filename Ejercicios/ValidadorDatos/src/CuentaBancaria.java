@@ -11,12 +11,12 @@ public class CuentaBancaria {
         return saldo;
     }
 
-    public void retirar(double cantidad){
+    public void retirar(double cantidad) throws SaldoInsuficienteException{
         if(cantidad < 0){
             throw new IllegalArgumentException("Cantidad negativa");
         }
         if (cantidad > saldo) {
-            throw new SaldoInsuficienteExc("Saldo Insuficiente")   
+            throw new SaldoInsuficienteException("Saldo Insuficiente");  
         }
         saldo -= cantidad;
     }
