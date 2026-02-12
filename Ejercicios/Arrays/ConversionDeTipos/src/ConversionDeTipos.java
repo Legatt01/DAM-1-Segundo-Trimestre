@@ -1,13 +1,13 @@
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class IntercambioDeMitades {
+public class ConversionDeTipos {
     public static void main(String[] args) throws Exception {
         Scanner sc = new Scanner(System.in);
         int[] array1 = pedirArrayInt(sc);
-        int[] array3 = intercambiarMitades(array1);
-
-        System.out.println(Arrays.toString(array3));
+        String[] enLetras = { "cero", "uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "diez" };
+        String[] array2 = conversorArray(array1, enLetras);
+        System.out.println(Arrays.toString(array2));
     }
 
     public static int[] pedirArrayInt(Scanner sc) {
@@ -22,16 +22,10 @@ public class IntercambioDeMitades {
         return numeros;
     }
 
-    public static int[] intercambiarMitades(int[] array1) {
-        int[] array2 = new int[array1.length];
-        for (int i = 0; i < array2.length / 2; i++) {
-            array2[i] = array1[(array1.length % 2) + i + array2.length / 2];
-        }
-        if (array1.length % 2 != 0) {
-            array2[array2.length / 2] = array1[array2.length / 2];
-        }
-        for (int i = 0; i < array2.length / 2 + (array1.length % 2); i++) {
-            array2[i - array2.length / 2 - (array1.length % 2)] = array1[i];
+    public static String[] conversorArray(int[] array1, String[] enLetras) {
+        String[] array2 = new String[array1.length];
+        for (int i = 0; i < array1.length; i++) {
+            array2[i] = enLetras[array1[i]];
         }
         return array2;
     }
