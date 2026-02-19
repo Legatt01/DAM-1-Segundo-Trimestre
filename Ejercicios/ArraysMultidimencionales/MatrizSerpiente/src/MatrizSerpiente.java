@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class MatrizEspiral {
+public class MatrizSerpiente {
     public static void main(String[] args) throws Exception {
         Scanner sc = new Scanner(System.in);
         System.out.println("Aqui tienes tu raiz espiral");
@@ -13,31 +13,17 @@ public class MatrizEspiral {
         int n = Integer.parseInt(sc.nextLine());
         int[][] matriz = new int[n][n];
         int contador = 1;
-        int iniFila = 0, finFila = n - 1;
-        int iniColumna = 0, finColumna = n - 1;
-
-        do {
-            for (int j = iniColumna; j <= finColumna; j++) {
-                matriz[iniFila][j] = contador++;
+        for (int i = 0; i < n; i++) {
+            if (i % 2 == 0) {// de izquierda a derecha
+                for (int j = 0; j < n; j++) {
+                    matriz[i][j] = contador++;
+                }
+            } else {// de derecha a izquierda
+                for (int j = n - 1; j >= 0; j--) {
+                    matriz[i][j] = contador++;
+                }
             }
-            iniFila++;
-
-            for (int i = iniFila; i <= finFila; i++) {
-                matriz[i][finColumna] = contador++;
-            }
-            finColumna--;
-
-            for (int j = finColumna; j >= iniColumna; j--) {
-                matriz[finFila][j] = contador++;
-            }
-            finFila--;
-
-            for (int i = finFila; i >= iniFila; i--) {
-                matriz[i][iniColumna] = contador++;
-            }
-            iniColumna++;
-        } while (contador <= n * n);
-
+        }
         return matriz;
     }
 
@@ -50,5 +36,4 @@ public class MatrizEspiral {
             System.out.println();
         }
     }
-
 }
